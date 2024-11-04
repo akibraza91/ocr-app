@@ -26,7 +26,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [watch]()
+- Live Site URL: [Watch?](https://ocr-app-ten.vercel.app/)
 
 
 ## My process
