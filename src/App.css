@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.App
+{
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+    padding-top: 4em;
+}
+#container
+{
+    position: relative;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+#container .row
+{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+}
+#container .row input,
+#container .row select
+{
+    border: 1px solid #aaa;
+    padding: 0.5em;
+    border-radius: 0.5em;
+}
+#container #buttons
+{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}
+#container #buttons input
+{
+    font-size: 1em;
+    font-family: inherit;
+    font-weight: 500;
+    padding: 0.3em 0.8em;
+    border-radius: 0.3em;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+#container #buttons input:first-child
+{
+    background-color: #1F487E;
+    color: #fff; 
+}
+#container #buttons input:first-child:hover
+{
+    background-color: #1D3461;
+}
+#container #buttons input:last-child
+{
+    background-color: #f1f1f1;
+}
+#container #buttons input:last-child:hover
+{
+    background-color: #f7f7f7;
+}
+#results
+{
+    position: relative;
+    min-width: 400px;
+    background-color: #f1f1f1;
+    border-radius: 0.3em;
+}
+#results h2
+{
+    background-color: #1F487E;
+    color: #fff;
+    padding: 0.3em 0 0.3em 0.3em;
+}
+#results p
+{
+    padding: 0.5em;
+}
+#container #loader
+{
+    text-align: right;
+    background-color: #f1f1f1;
+    font-size: 0.7em;
+    font-weight: 600;
+    border-radius: 50px;
+    overflow: hidden;
+}
+@media (max-width: 480px){
+    #container,
+    #results
+    {
+        min-width: 350px;
+    }
+}
