@@ -1,0 +1,199 @@
+@import './Intro.css';
+
+:root
+{
+    --borderColor: #D7E0EB;
+    --progressBarColor: #F4F6FC;
+}
+#tool-section
+{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('D:\Workspace\React\ocr-app\public\s2.webp');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#tool-section .container
+{
+    position: relative;
+    width: 80%;
+    height: auto;
+    background-color: var(--white);
+    padding: 3em 0;
+}
+#tool-section .container .heading
+{
+    padding-bottom: 2em;
+    text-align: center;
+}
+#tool-section .container .heading h1
+{
+    position: relative;
+    width: 100%;
+    height: auto;
+    color: var(--primaryColor);
+    text-align: center;
+}
+#tool-section .container .heading p
+{
+    color: var(--darkBlue);
+}
+#tool-section .container .inner-container
+{
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding-bottom: 1em;
+}
+#tool-section .container .form
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    border: 1px solid var(--borderColor);
+    padding: 1.5em 0.5em;
+    border-radius: 0.5em;
+}
+#tool-section .container .form label span
+{
+    color: var(--darkBlue);
+}
+#tool-section .container .form input[name='imageFile'],
+#tool-section .container .form select
+{
+    display: block;
+    width: 100%;
+    border: 1.5px solid var(--borderColor);
+    padding: 0.5em;
+    outline: none;
+    margin-top: 0.3em;
+    border-radius: 0.5em;
+}
+#tool-section .container .form .progressBar
+{
+    position: relative;
+    width: 100%;
+    height: 0.6em;
+    background-color: var(--progressBarColor);
+    text-align: right;
+    border-radius: 0.5em;
+    overflow: hidden;
+    display: flex;
+}
+#tool-section .container .form .buttons
+{
+    display: flex;
+    gap: 1em;
+    margin-top: 0.5em;
+}
+#tool-section .container .form .buttons input
+{
+    padding: 0.4em 1.2em;
+    font-family: inherit;
+    font-size: 0.9em;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+#tool-section .container .form .buttons input:first-child
+{
+    background-color: var(--primaryColor);
+    color: var(--white);
+}
+#tool-section .container .form .buttons input:first-child:hover
+{
+    background-color: var(--darkBlue);
+}
+#tool-section .container .form .buttons input:last-child
+{
+    background-color: var(--progressBarColor);
+}
+#tool-section .container .form .buttons input:last-child:hover
+{
+    background-color: var(--borderColor);
+}
+#tool-section .container .results
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    border: 1px solid var(--borderColor);
+    border-radius: 0.5em;
+    overflow: hidden;
+    background-color: var(--progressBarColor);
+}
+#tool-section .container .results h2
+{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    background-color: var(--primaryColor);
+    color: var(--white);
+    padding: 0.2em 0;
+}
+#tool-section .container .results .details
+{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 0.75em 0.75em 1.5em 0.75em;
+}
+#tool-section .container .results .details label
+{
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+#tool-section .container .results .details label span
+{
+    position: relative;
+    width: 40%;
+}
+#tool-section .container .results .details label input
+{
+    position: relative;
+    width: 60%;
+    outline: none;
+    padding: 0.2em;
+    font-size: 1em;
+}
+@media (max-width: 930px){
+    #tool-section .container .inner-container
+    {
+        gap: 2em;
+    }
+}
+@media (max-width: 768px){
+    /* #tool-section .container h1
+    {
+        padding-bottom: 1em;
+    } */
+}
+@media (max-width: 480px){
+    #tool-section .container
+    {
+        width: 90%;
+    }
+    #tool-section .container h1
+    {
+        font-size: 1.7em;
+    }
+}
+@media (max-width: 425px){
+    #tool-section .container .inner-container
+    {
+        padding: 0 0.5em;
+    }
+}

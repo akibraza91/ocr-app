@@ -1,0 +1,128 @@
+:root
+{
+    --primaryColor: #3C91F9;
+    --secondaryColor: #F5FBF9;
+    --compColor: #FFF7D6;
+
+    --darkBlue: #1D3461;
+    --blackColor: #292929;
+    --white: #FFFFFF;
+}
+#hero
+{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primaryColor);
+    color: var(--white);
+}
+#hero .inner
+{
+    position: relative;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: -2em;
+}
+#hero .content
+{
+    position: relative;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+#hero .content h1
+{
+    position: relative;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1;
+}
+#hero .content p
+{
+    font-size: 14px;
+}
+#hero .content a
+{
+    position: relative;
+    width: fit-content;
+    text-decoration: none;
+    background-color: var(--compColor);
+    color: var(--blackColor);
+    padding: 0.4em 1.5em;
+    margin-top: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3em;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+#hero .content a:hover
+{
+    background-color: var(--darkBlue);
+    color: var(--white);
+}
+#hero .content a:hover svg
+{
+    fill: #fff;
+}
+#hero .image
+{
+    max-width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#hero .image img
+{
+    position: relative;
+    width: 70%;
+    height: auto;
+}
+/*--------------------Media Query-----------------*/
+@media (max-width: 940px){
+    #hero .inner
+    {
+        width: 100%;
+    }
+}
+@media (max-width: 768px){
+    #hero .inner
+    {
+        flex-direction: column-reverse;
+        gap: 2em;
+        
+    }
+    #hero .inner .image
+    {
+        max-width: 250px;
+    }
+}
+@media (max-width: 480px){
+    /* #hero .inner .image
+    {
+        width: 75%;
+    } */
+    #hero .inner .content
+    {
+        width: 90%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    #hero .inner .content h1
+    {
+        font-size: 30px;
+    }
+    #hero .inner .content a
+    {
+        margin-top: 1em;
+    }
+}
