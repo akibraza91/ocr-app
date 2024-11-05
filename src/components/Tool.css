@@ -10,7 +10,7 @@
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background-image: url('D:\Workspace\React\ocr-app\public\s2.webp');
+    background-image: url('/public/s2.webp');
     display: flex;
     justify-content: center;
     align-items: center;
@@ -174,12 +174,6 @@
     {
         gap: 2em;
     }
-}
-@media (max-width: 768px){
-    /* #tool-section .container h1
-    {
-        padding-bottom: 1em;
-    } */
 }
 @media (max-width: 480px){
     #tool-section .container

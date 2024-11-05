@@ -86,7 +86,6 @@
     width: 70%;
     height: auto;
 }
-/*--------------------Media Query-----------------*/
 @media (max-width: 940px){
     #hero .inner
     {
