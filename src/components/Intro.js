@@ -5,6 +5,14 @@ import { useState, useRef } from 'react';
 import { createWorker } from 'tesseract.js';
 import { Link, Element } from 'react-scroll';
 
+// For pdf support library
+import * as pdfjs from 'pdfjs-dist'
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.mjs',
+  import.meta.url
+).toString()
+
+
 const Intro = () => {
   const [imageFile, setImageFile] = useState(null);
   const [language, setLanguage] = useState('eng');  // by default language to be english
@@ -13,46 +21,65 @@ const Intro = () => {
   const [keyInfo, setKeyInfo] = useState({});
   const imageRef = useRef(null);
   const langRef = useRef(null);
+  const [disable, setDisable] = useState(false);
 
-  // Get image file from file input
+  // Get image file from input
   const handleImageChange = (e) => {
-    if(e.target.files){
-    setImageFile(e.target.files[0]);
-    }
+    const file = e.target.files[0];
+    setImageFile(file);
+    // if(file.type === 'application/pdf'){
+    //   const loadTask = pdfjs.getDocument(URL.createObjectURL(file));
+      
+    //   loadTask.promise
+    //   .then((doc) => {
+    //     const pages = doc.numPages;
+        
+    //     for(let i = 1; i <= pages; i++){
+    //       doc.getPage(i).then((page) => {
+    //         const textContent = page.getTextContent();
+
+    //         textContent.then((txtContent) => {
+    //           const text = txtContent.items.map(item => item.str).join('');
+    //           console.log('Pdf text: ', text)
+    //         })
+    //       })
+    //     }
+    //   });
+    // }
   }
 
   // Get language from select input
   const handleLanguageChange = (e) => {
     if(imageFile){
-    setLanguage(e.target.value);
+      setLanguage(e.target.value);
     }
-  } 
+  }
 
   // Get ocr text
-  const getOcrResult = () => {
+  const getOcrResult = async () => {
     if(!imageFile){
-    window.alert('Please select an image file?');
-    return;
+      window.alert('Please select a file to perform OCR?');
+      return;
     }
 
     setLoading(true);
+    setDisable(true);
     const worker = createWorker(language, 1, {
-    logger: (m) => {
+      logger: m => {
         if(m.status === 'recognizing text'){
-        setProgress(Math.floor(m.progress * 100));
+          setProgress(Math.floor(m.progress * 100));
         }
-    }
+      }
     });
 
-    (async () => {
     const rs = (await worker).recognize(imageFile);
-    const ocrText = (await rs).data.text;
-    extractKeyInformation(ocrText);
+    const txt = (await rs).data.text;
+    extractKeyInformation(txt);
     (await worker).terminate();
-    })();
+    setDisable(false);
   }
 
-  // Extract key information from OCR text
+  // Extract key information from text
   const extractKeyInformation = (key) => {
     const nameRegex = /Name :\s*([A-Za-z]+)/i;
     const licenceRegex = /Licence No. :\s*([A-Z0-9-]+)/i;
@@ -69,12 +96,14 @@ const Intro = () => {
     });
   }
 
+  // Apply loading color
   const applyLoadingColor = () => {
     if(progress < 100 || progress === 100){
     return '#fff7d6';
     }
   }
 
+  // Clear all fields
   const handleClear = () => {
     setImageFile(null);
     imageRef.current.value = null
@@ -105,7 +134,6 @@ const Intro = () => {
     </div>
     {/* ---------------Tool Section ---------------- */}
     <Element id='tool-section' name='tool-section'>
-      
       <div className="container">
         <div className="heading">
           <h1>Try our Driving Licence Extractor</h1>
@@ -126,10 +154,10 @@ const Intro = () => {
                   </select>
               </label>
               <div className="progressBar">
-                  <span style={{width: `${progress}%`, backgroundColor: applyLoadingColor()}}></span>
+                  <span style={{width: `${progress}%`, backgroundColor: applyLoadingColor(), fontSize: '10px'}}>{progress}%</span>
               </div>
               <div className="buttons">
-                  <input type="button" value={'Submit'} onClick={getOcrResult} />
+                  <input type="button" value={'Extract'} onClick={getOcrResult} disabled={disable} />
                   <input type="button" value={'Clear'} onClick={handleClear} />
               </div>
           </div>
@@ -141,7 +169,7 @@ const Intro = () => {
                       <input type="text" name='name' readOnly defaultValue={loading ? keyInfo.name : ''} />
                   </label>
                   <label htmlFor="licenceNum">
-                      <span>Licence number :</span>
+                      <span>Licence No :</span>
                       <input type="text" name='licenceNum' readOnly defaultValue={loading ? keyInfo.licenceNumber : ''}/>
                   </label>
                   <label htmlFor="dob">

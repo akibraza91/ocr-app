@@ -11,6 +11,9 @@
     width: 100%;
     min-height: 100vh;
     background-image: url('/public/s2.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,6 +88,8 @@
     border-radius: 0.5em;
     overflow: hidden;
     display: flex;
+    align-items: center;
+    font-weight: 500;
 }
 #tool-section .container .form .buttons
 {

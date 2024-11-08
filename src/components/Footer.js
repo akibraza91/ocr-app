@@ -16,7 +16,7 @@ const Footer = () => {
             </p>
         </div>
         <div className="email">
-            <span>info@example.com</span>
+            <span>akibraza91@gmail.com</span>
         </div>
       </div>
       <div className="social-media">
